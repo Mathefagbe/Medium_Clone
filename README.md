@@ -1,4 +1,4 @@
-# dblog
+# Mini Medium Clone
 
 A new Flutter project.
 
