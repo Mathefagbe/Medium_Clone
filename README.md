@@ -1,16 +1,18 @@
 # Mini Medium Clone
 
-A new Flutter project.
+# **About**
+Mobile app for Creating,Updating,Reading and Deleting BlogPost.It also have the tendency of creating a relationship between users like following each other.
 
-## Getting Started
+## **Included Packages**
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+* Quill_Html_Editor
+* http
+* shared preference
+* provider
+* flutter widget from html
+* vsc quill delta to html
+  
+## **Start the app**
+* `git clone:https://github.com/Mathefagbe/Medium_Clone.git`
+* install all dependencies: `flutter pub get` in terminal
+* run the project with `flutter run` or `F5`
