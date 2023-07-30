@@ -1,5 +1,6 @@
 import 'package:dblog/view/widgets/custompaint.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Logo extends StatelessWidget {
   const Logo({super.key});
@@ -13,14 +14,14 @@ class Logo extends StatelessWidget {
         CustomPaint(
           painter: Paints(color: color),
         ),
-        const SizedBox(
-          width: 30,
+      SizedBox(
+          width: 30.w,
         ),
         CustomPaint(
           painter: PaintSmall(color: color),
         ),
-        const SizedBox(
-          width: 15,
+      SizedBox(
+          width: 15.w,
         ),
         CustomPaint(
           painter: PaintSmallest(color: color),

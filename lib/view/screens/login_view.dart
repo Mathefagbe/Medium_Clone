@@ -1,4 +1,3 @@
-import 'package:dblog/view/screens/signup_view.dart';
 import 'package:dblog/view/widgets/logo.dart';
 import 'package:dblog/viewmodel/providers/auth_viewmodel.dart';
 import 'package:flutter/material.dart';
@@ -7,6 +6,7 @@ import '../../model/enums/enums.dart';
 import '../style/colors/colorstyle.dart';
 import '../../viewmodel/providers/password_visibility.dart';
 import '../widgets/login_signup_form.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -41,18 +41,18 @@ class _LoginScreenState extends State<LoginScreen> {
         body: Form(
       key: _formstate,
       child: SingleChildScrollView(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 70),
+        padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 70.h),
         child: Column(
           children: [
             const Logo(),
-            const SizedBox(height: 50),
+            SizedBox(height: 50.h),
             Text('Welcome Back.',
                 style: Theme.of(context)
                     .textTheme
                     .bodyLarge!
-                    .copyWith(fontSize: 25)),
-            const SizedBox(
-              height: 30,
+                    .copyWith(fontSize: 25.sp)),
+            SizedBox(
+              height: 30.h,
             ),
             TextFormField(
                 style: Theme.of(context).textTheme.labelMedium,
@@ -63,14 +63,18 @@ class _LoginScreenState extends State<LoginScreen> {
                     labelStyle: Theme.of(context).textTheme.labelMedium,
                     hintText: "Email",
                     labelText: "Email")),
-            const SizedBox(
-              height: 30,
+            SizedBox(
+              height: 30.h,
             ),
             _PasswordTextForm(
               controller: password,
             ),
-            const SizedBox(
-              height: 30,
+            SizedBox(
+              height: 30.h,
+            ),
+            const _ErrorMessage(),
+            SizedBox(
+              height: 10.h,
             ),
             InkWell(
               onTap: () async {
@@ -79,17 +83,17 @@ class _LoginScreenState extends State<LoginScreen> {
                     'email': email.text,
                     'password': password.text,
                   };
-                  Provider.of<AuthChangeNotifer>(context, listen: false)
+                  Provider.of<SignInAuthChangeNotifer>(context, listen: false)
                       .login(formdata);
                 }
               },
-              child: Consumer<AuthChangeNotifer>(
+              child: Consumer<SignInAuthChangeNotifer>(
                 builder: (context, value, child) => Container(
                   alignment: Alignment.center,
                   width: double.maxFinite,
-                  height: 50,
+                  height: 50.h,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
+                    borderRadius: BorderRadius.circular(20.r),
                     color: ColorStyle.lightgreen[400],
                   ),
                   child: value.fetchstate == PageState.loading
@@ -98,10 +102,10 @@ class _LoginScreenState extends State<LoginScreen> {
                             color: ColorStyle.white,
                           ),
                         )
-                      : const Text(
+                      : Text(
                           "Login",
                           style: TextStyle(
-                            fontSize: 15,
+                            fontSize: 15.sp,
                             color: ColorStyle.white,
                             fontWeight: FontWeight.w600,
                           ),
@@ -109,13 +113,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
             ),
-            const SizedBox(
-              height: 10,
-            ),
-            const ErrorMessage(),
             // ***************************
-            const SizedBox(
-              height: 5,
+            SizedBox(
+              height: 5.h,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -163,6 +163,27 @@ class _PasswordTextForm extends StatelessWidget {
               ),
               hintText: "Password",
               labelText: "Password")),
+    );
+  }
+}
+
+class _ErrorMessage extends StatelessWidget {
+  const _ErrorMessage();
+
+  @override
+  Widget build(BuildContext context) {
+    return Consumer<SignInAuthChangeNotifer>(
+      builder: (context, value, child) {
+        return value.errormessage == ""
+            ? const SizedBox()
+            : Text(
+                value.errormessage,
+                style: Theme.of(context)
+                    .textTheme
+                    .labelSmall!
+                    .copyWith(color: Colors.red),
+              );
+      },
     );
   }
 }

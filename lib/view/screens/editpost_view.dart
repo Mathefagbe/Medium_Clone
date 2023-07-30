@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:quill_html_editor/quill_html_editor.dart';
 import '../style/colors/colorstyle.dart';
 import '../widgets/loadingindicator_widget.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class EditPostView extends StatefulWidget {
   final String post;
@@ -33,8 +34,8 @@ class _EditPostViewState extends State<EditPostView> {
 
   final _toolbarColor = Colors.grey.shade200;
   final _toolbarIconColor = Colors.black87;
-  final _hintTextStyle = const TextStyle(
-      fontSize: 18, color: Colors.black12, fontWeight: FontWeight.normal);
+  final _hintTextStyle =  TextStyle(
+      fontSize: 18.sp, color: Colors.black12, fontWeight: FontWeight.normal);
 
   bool isloading = false;
   @override
@@ -100,12 +101,12 @@ class _EditPostViewState extends State<EditPostView> {
                 hintText: 'Hint text goes here',
                 controller: controller,
                 isEnabled: true,
-                minHeight: 200,
+                minHeight: 200.h,
                 textStyle: Theme.of(context).textTheme.bodyLarge,
                 hintTextStyle: _hintTextStyle,
                 hintTextAlign: TextAlign.start,
-                padding: const EdgeInsets.only(left: 10, top: 10, right: 10),
-                hintTextPadding: const EdgeInsets.only(left: 20),
+                padding: EdgeInsets.only(left: 10.w, top: 10.h, right: 10.w),
+                hintTextPadding:  EdgeInsets.only(left: 20.w),
                 backgroundColor: Theme.of(context).scaffoldBackgroundColor,
               ),
             ),
@@ -115,8 +116,8 @@ class _EditPostViewState extends State<EditPostView> {
               child: ToolBar.scroll(
                 mainAxisAlignment: MainAxisAlignment.start,
                 toolBarColor: _toolbarColor,
-                padding: const EdgeInsets.all(8),
-                iconSize: 25,
+                padding:  EdgeInsets.all(8.sp),
+                iconSize: 25.r,
                 iconColor: _toolbarIconColor,
                 activeIconColor: Colors.greenAccent.shade400,
                 controller: controller,

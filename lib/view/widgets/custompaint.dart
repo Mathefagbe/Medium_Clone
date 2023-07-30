@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Paints extends CustomPainter {
   final Color color;
@@ -10,7 +11,8 @@ class Paints extends CustomPainter {
       ..strokeWidth = 6
       ..style = PaintingStyle.fill;
     var c = Offset(size.width / 2, size.height / 2);
-    canvas.drawOval(Rect.fromCenter(center: c, width: 40, height: 30), paint);
+    canvas.drawOval(
+        Rect.fromCenter(center: c, width: 40.w, height: 30.h), paint);
   }
 
   @override
@@ -29,7 +31,8 @@ class PaintSmall extends CustomPainter {
       ..strokeWidth = 6
       ..style = PaintingStyle.fill;
     var c = Offset(size.width / 2, size.height / 2);
-    canvas.drawOval(Rect.fromCenter(center: c, width: 20, height: 30), paint);
+    canvas.drawOval(
+        Rect.fromCenter(center: c, width: 20.w, height: 30.h), paint);
   }
 
   @override
@@ -49,7 +52,8 @@ class PaintSmallest extends CustomPainter {
       ..style = PaintingStyle.fill;
     var c = Offset(size.width / 2, size.height / 2);
     // canvas.drawCircle(c, 10, paint);
-    canvas.drawOval(Rect.fromCenter(center: c, width: 10, height: 30), paint);
+    canvas.drawOval(
+        Rect.fromCenter(center: c, width: 10.w, height: 30.h), paint);
   }
 
   @override

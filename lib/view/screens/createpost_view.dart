@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:quill_html_editor/quill_html_editor.dart';
 import '../../viewmodel/providers/createpost_viewmodel.dart';
 import '../style/colors/colorstyle.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../widgets/loadingindicator_widget.dart';
 
 class CreatePostView extends StatefulWidget {
@@ -101,19 +102,19 @@ class _CreatePostViewState extends State<CreatePostView> {
                 textStyle: Theme.of(context).textTheme.bodyLarge,
                 hintTextStyle: _hintTextStyle,
                 hintTextAlign: TextAlign.start,
-                padding: const EdgeInsets.only(left: 10, top: 10, right: 10),
+                padding: EdgeInsets.only(left: 10.w, top: 10.h, right: 10.w),
                 hintTextPadding: const EdgeInsets.only(left: 20),
                 backgroundColor: Theme.of(context).scaffoldBackgroundColor,
               ),
             ),
             SizedBox(
               width: double.maxFinite,
-              height: 50,
+              height: 50.h,
               child: ToolBar.scroll(
                 mainAxisAlignment: MainAxisAlignment.start,
                 toolBarColor: _toolbarColor,
                 padding: const EdgeInsets.all(8),
-                iconSize: 25,
+                iconSize: 25.sp,
                 iconColor: _toolbarIconColor,
                 activeIconColor: Colors.greenAccent.shade400,
                 controller: controller,

@@ -7,6 +7,7 @@ import '../widgets/error_dialog_widget.dart';
 import '../widgets/user_followbtn_widget.dart';
 import '../widgets/loadingindicator_widget.dart';
 import '../../viewmodel/providers/following_viewmodel.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class FollowingView extends StatelessWidget {
   final int id;
@@ -36,19 +37,19 @@ class FollowingView extends StatelessWidget {
               );
             } else {
               return ListView.separated(
-                  separatorBuilder: (context, index) => const Divider(
+                  separatorBuilder: (context, index) =>  Divider(
                         color: ColorStyle.lightgray,
-                        height: 5,
+                        height: 5.h,
                       ),
                   itemCount: value.following.length,
                   itemBuilder: (context, index) {
                     return InkWell(
                       onTap: () {},
                       child: ListTile(
-                        contentPadding: const EdgeInsets.symmetric(
-                            vertical: 10, horizontal: 20),
+                        contentPadding: EdgeInsets.symmetric(
+                            vertical: 10.h, horizontal: 20.w),
                         leading: CircleAvatar(
-                          radius: 20,
+                          radius: 20.r,
                           backgroundImage: NetworkImage(
                             value.following[index].userTo.userprofile.image,
                           ),
@@ -58,7 +59,7 @@ class FollowingView extends StatelessWidget {
                           style: Theme.of(context)
                               .textTheme
                               .headlineMedium!
-                              .copyWith(fontSize: 16),
+                              .copyWith(fontSize: 16.sp),
                         ),
                         subtitle: Text(
                           value.following[index].userTo.userprofile.bio,
@@ -69,8 +70,8 @@ class FollowingView extends StatelessWidget {
                         trailing: value.following[index].status == "hide"
                             ? const SizedBox()
                             : FollowBtn(
-                                width: 100,
-                                height: 30,
+                                width: 100.w,
+                                height: 30.h,
                                 authorid: value.following[index].userTo.id,
                                 follow: value.following[index].status,
                               ),

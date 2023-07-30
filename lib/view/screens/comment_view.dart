@@ -1,5 +1,5 @@
 import 'dart:convert';
-
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:dblog/viewmodel/providers/comment_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -55,7 +55,7 @@ class _CommentScreenState extends State<CommentScreen> {
                         .commentrefresh(widget.slug));
           } else {
             return Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15),
+              padding: EdgeInsets.symmetric(horizontal: 15.w),
               child: Column(
                 children: [
                   _CommentBody(val: value.comment),
@@ -95,7 +95,7 @@ class _CommentBody extends StatelessWidget {
     return Expanded(
         child: ListView.separated(
       itemBuilder: (context, index) => Container(
-        margin: const EdgeInsets.only(top: 10, bottom: 15),
+        margin: EdgeInsets.only(top: 10.h, bottom: 15.h),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -105,19 +105,19 @@ class _CommentBody extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   CircleAvatar(
-                    radius: 15,
+                    radius: 15.r,
                     backgroundImage:
                         NetworkImage(val[index].author.userprofile.image),
                   ),
-                  const SizedBox(
-                    width: 10,
+                   SizedBox(
+                    width: 10.w,
                   ),
                   Text(
                     val[index].author.username,
                     style: Theme.of(context).textTheme.headlineMedium,
                   ),
-                  const SizedBox(
-                    width: 5,
+                   SizedBox(
+                    width: 5.w,
                   ),
                   Text(val[index].timeAgo.replaceFirst(RegExp(r'Â'), ''),
                       style: Theme.of(context).textTheme.labelSmall),
@@ -128,21 +128,21 @@ class _CommentBody extends StatelessWidget {
                 ],
               ),
             ),
-            const SizedBox(
-              height: 8,
+           SizedBox(
+              height: 8.h,
             ),
             SizedBox(
               child: Text(utf8convert(val[index].comment),
                   style: Theme.of(context)
                       .textTheme
                       .bodyLarge
-                      ?.copyWith(fontSize: 15, height: 1.7)),
+                      ?.copyWith(fontSize: 15.sp, height: 1.7.h)),
             ),
           ],
         ),
       ),
-      separatorBuilder: (context, index) => const Divider(
-        height: 5,
+      separatorBuilder: (context, index) =>  Divider(
+        height: 5.h,
         color: ColorStyle.lightgray,
       ),
       itemCount: val.length,
@@ -191,11 +191,11 @@ class CommentSendBtn extends StatelessWidget {
               )
             : Container(
                 alignment: Alignment.center,
-                margin: const EdgeInsets.only(right: 5),
-                height: 40,
-                width: 40,
+                margin: EdgeInsets.only(right: 5.w),
+                height: 40.h,
+                width: 40.w,
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(40),
+                    borderRadius: BorderRadius.circular(40.r),
                     color: ColorStyle.lightgreen.withOpacity(0.7)),
                 child: const Icon(Icons.send),
               ),

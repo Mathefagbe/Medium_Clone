@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 import '../../services/api_client/patch_repository.dart';
 import '../style/colors/colorstyle.dart';
 import '../widgets/commentbox_form.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class EditProfileView extends StatefulWidget {
   final String imageurl;
@@ -72,19 +73,19 @@ class _EditProfileViewState extends State<EditProfileView> {
               style: Theme.of(context).textTheme.titleMedium),
         ),
         body: Padding(
-          padding: const EdgeInsets.all(10),
+          padding:  EdgeInsets.all(10.sp),
           child: SingleChildScrollView(
             child: Column(
               children: [
                 Stack(alignment: Alignment.bottomRight, children: [
                   imagepicked == ""
                       ? CircleAvatar(
-                          radius: 60,
+                          radius: 60.r,
                           backgroundImage: NetworkImage(widget.imageurl),
                         )
                       : CircleAvatar(
                           backgroundImage: FileImage(File(imagepicked)),
-                          radius: 60,
+                          radius: 60.r,
                         ),
                   IconButton(
                       onPressed: () {
@@ -92,19 +93,19 @@ class _EditProfileViewState extends State<EditProfileView> {
                                 listen: false)
                             .pickedImage();
                       },
-                      icon: const Icon(
+                      icon:  Icon(
                         Icons.camera_alt,
-                        size: 30,
+                        size: 30.sp,
                       )),
                 ]),
-                const SizedBox(
-                  height: 30,
+                 SizedBox(
+                  height: 30.h,
                 ),
                 TextField(
                   style: Theme.of(context)
                       .textTheme
                       .headlineMedium!
-                      .copyWith(height: 1.5),
+                      .copyWith(height: 1.5.h),
                   maxLength: 300,
                   maxLines: null,
                   keyboardType: TextInputType.multiline,
@@ -114,13 +115,13 @@ class _EditProfileViewState extends State<EditProfileView> {
                       focusedBorder: UnderlineInputBorder(
                           borderSide: BorderSide(
                               color: ColorStyle.lightgreen.withOpacity(0.5)),
-                          borderRadius: BorderRadius.circular(3)),
+                          borderRadius: BorderRadius.circular(3.r)),
                       enabledBorder: UnderlineInputBorder(
                         borderSide: BorderSide(
                             color: ColorStyle.lightgreen.withOpacity(0.3)),
                       ),
-                      contentPadding: const EdgeInsets.symmetric(
-                          vertical: 20, horizontal: 8),
+                      contentPadding: EdgeInsets.symmetric(
+                          vertical: 20.h, horizontal: 8.w),
                       labelText: "short bio"),
                 ),
               ],

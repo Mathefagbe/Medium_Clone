@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 import '../widgets/error_dialog_widget.dart';
 import '../widgets/loadingindicator_widget.dart';
 import '../../viewmodel/providers/home_viewmodel.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -14,15 +15,15 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: 100,
+        toolbarHeight: 100.h,
         flexibleSpace: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
+          padding: EdgeInsets.symmetric(horizontal: 20.w),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               const Logo(),
-              const SizedBox(
-                height: 30,
+              SizedBox(
+                height: 30.h,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -33,8 +34,8 @@ class HomeScreen extends StatelessWidget {
                   )
                 ],
               ),
-              const SizedBox(
-                height: 10,
+              SizedBox(
+                height: 10.h,
               )
             ],
           ),
@@ -77,9 +78,9 @@ class _BuildPostList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
-        separatorBuilder: (context, index) => const Divider(
+        separatorBuilder: (context, index) => Divider(
               color: ColorStyle.lightgray,
-              height: 5,
+              height: 5.h,
             ),
         itemCount: value.blogpost.length,
         itemBuilder: (context, index) {
@@ -89,15 +90,15 @@ class _BuildPostList extends StatelessWidget {
                   arguments: value.blogpost[index].slug);
             },
             child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+              padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
               child: Column(
                 children: [
                   _BuildRowPostAuthor(
                     imgurl: value.blogpost[index].author.userprofile.image,
                     username: value.blogpost[index].author.username,
                   ),
-                  const SizedBox(
-                    height: 5,
+                  SizedBox(
+                    height: 5.h,
                   ),
                   _BuildRowPostTitle(
                     imgurl: value.blogpost[index].image,
@@ -122,15 +123,14 @@ class _BuildRowPostAuthor extends StatelessWidget {
     return Row(
       children: [
         CircleAvatar(
-          radius: 15,
+          radius: 15.r,
           backgroundImage: NetworkImage(imgurl),
         ),
-        const SizedBox(
-          width: 10,
+        SizedBox(
+          width: 10.w,
         ),
         Text(username, style: Theme.of(context).textTheme.headlineSmall),
         const Spacer(),
-        const Icon(Icons.more_vert)
       ],
     );
   }
@@ -148,19 +148,19 @@ class _BuildRowPostTitle extends StatelessWidget {
     return Row(
       children: [
         Container(
-          height: 90,
-          width: 90,
+          height: 90.h,
+          width: 90.w,
           decoration: BoxDecoration(
               image: DecorationImage(
                   image: NetworkImage(imgurl), fit: BoxFit.cover),
               borderRadius: BorderRadius.circular(5)),
         ),
-        const SizedBox(
-          width: 20,
+        SizedBox(
+          width: 20.w,
         ),
         Expanded(
           child: SizedBox(
-            height: 90,
+            height: 90.h,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,

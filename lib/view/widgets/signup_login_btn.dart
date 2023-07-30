@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../style/colors/colorstyle.dart';
 
 class ReuseableBtn extends StatelessWidget {
@@ -19,15 +19,15 @@ class ReuseableBtn extends StatelessWidget {
       child: Container(
         alignment: Alignment.center,
         width: double.maxFinite,
-        padding: const EdgeInsets.symmetric(vertical: 15),
+        padding: EdgeInsets.symmetric(vertical: 15.h),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(20.r),
           color: ColorStyle.lightgreen[400],
         ),
         child: Text(
           text,
-          style: const TextStyle(
-            fontSize: 15,
+          style: TextStyle(
+            fontSize: 15.sp,
             color: ColorStyle.white,
             fontWeight: FontWeight.w600,
           ),

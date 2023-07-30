@@ -9,6 +9,7 @@ import '../../viewmodel/providers/stories_viewmodel.dart';
 import '../widgets/error_dialog_widget.dart';
 import '../widgets/loadingindicator_widget.dart';
 import '../../viewmodel/providers/profile_viewmodel.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -46,8 +47,8 @@ class ProfileScreen extends StatelessWidget {
               return value.userprofile == null
                   ? const Loading()
                   : Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 20,
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 15.w,
                       ),
                       child: Column(
                         children: [
@@ -92,11 +93,11 @@ class _BuildUserDetailContainer extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             CircleAvatar(
-              radius: 30,
+              radius: 30.r,
               backgroundImage: NetworkImage(value.userprofile!.image),
             ),
-            const SizedBox(
-              width: 10,
+            SizedBox(
+              width: 10.w,
             ),
             Expanded(
               child: Column(
@@ -107,10 +108,10 @@ class _BuildUserDetailContainer extends StatelessWidget {
                     style: Theme.of(context)
                         .textTheme
                         .headlineMedium!
-                        .copyWith(fontSize: 20),
+                        .copyWith(fontSize: 20.sp),
                   ),
-                  const SizedBox(
-                    height: 3,
+                  SizedBox(
+                    height: 3.h,
                   ),
                   Row(
                     children: [
@@ -124,10 +125,10 @@ class _BuildUserDetailContainer extends StatelessWidget {
                             style: Theme.of(context)
                                 .textTheme
                                 .labelMedium!
-                                .copyWith(fontSize: 17)),
+                                .copyWith(fontSize: 17.sp)),
                       ),
-                      const SizedBox(
-                        width: 5,
+                      SizedBox(
+                        width: 5.w,
                       ),
                       InkWell(
                         onTap: () {
@@ -138,7 +139,7 @@ class _BuildUserDetailContainer extends StatelessWidget {
                             style: Theme.of(context)
                                 .textTheme
                                 .labelMedium!
-                                .copyWith(fontSize: 17)),
+                                .copyWith(fontSize: 17.sp)),
                       ),
                     ],
                   ),
@@ -147,21 +148,27 @@ class _BuildUserDetailContainer extends StatelessWidget {
             ),
           ],
         ),
-        const SizedBox(height: 10),
+        SizedBox(height: 10.h),
         ElevatedButton.icon(
-            style: const ButtonStyle(
+            style: ButtonStyle(
                 padding: MaterialStatePropertyAll(
-                    EdgeInsets.symmetric(horizontal: 100, vertical: 10)),
+                    EdgeInsets.symmetric(horizontal: 100.w, vertical: 10.h)),
                 backgroundColor:
-                    MaterialStatePropertyAll(ColorStyle.lightgreen)),
+                    const MaterialStatePropertyAll(ColorStyle.lightgreen)),
             onPressed: () {
               Navigator.pushNamed(context, "/edit_profile", arguments: {
                 "imageurl": value.userprofile!.image,
                 "aboutuser": value.userprofile!.bio,
               });
             },
-            icon: const Icon(Icons.edit),
-            label: const Text("Edit Profile"))
+            icon: Icon(
+              Icons.edit,
+              color: Theme.of(context).tabBarTheme.indicatorColor,
+            ),
+            label: Text(
+              "Edit Profile",
+              style: Theme.of(context).textTheme.headlineMedium,
+            ))
       ],
     );
   }
@@ -172,9 +179,9 @@ class _BottomTabContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SizedBox(
-      height: 50,
-      child: TabBar(tabs: [
+    return SizedBox(
+      height: 50.h,
+      child: const TabBar(tabs: [
         Tab(
           text: "Stories",
         ),
@@ -211,28 +218,27 @@ class _UserPostListView extends StatelessWidget {
                     ),
                   )
                 : ListView.separated(
-                    separatorBuilder: (context, index) => const Divider(
+                    separatorBuilder: (context, index) => Divider(
                       color: ColorStyle.lightgray,
-                      height: 5,
+                      height: 5.h,
                     ),
                     itemCount: value.userstories.length,
                     itemBuilder: (context, index) {
                       return Container(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 5, vertical: 10),
+                          padding: EdgeInsets.symmetric(vertical: 10.h),
                           child: Column(children: [
                             Row(
                               children: [
                                 CircleAvatar(
-                                  radius: 15,
+                                  radius: 15.r,
                                   backgroundImage: NetworkImage(value
                                       .userstories[index]
                                       .author
                                       .userprofile
                                       .image),
                                 ),
-                                const SizedBox(
-                                  width: 10,
+                                SizedBox(
+                                  width: 10.w,
                                 ),
                                 Text(value.userstories[index].author.username,
                                     style: Theme.of(context)
@@ -243,7 +249,7 @@ class _UserPostListView extends StatelessWidget {
                                     icon: const Icon(Icons.more_vert),
                                     shape: RoundedRectangleBorder(
                                         borderRadius:
-                                            BorderRadius.circular(10)),
+                                            BorderRadius.circular(10.r)),
                                     itemBuilder: (context) => [
                                           PopupMenuItem(
                                               onTap: () => Future(() =>
@@ -275,8 +281,8 @@ class _UserPostListView extends StatelessWidget {
                               ],
                             ),
                             // ************************************//
-                            const SizedBox(
-                              height: 5,
+                            SizedBox(
+                              height: 5.h,
                             ),
                             // ************************************//
                             InkWell(
@@ -285,17 +291,17 @@ class _UserPostListView extends StatelessWidget {
                                   arguments: value.userstories[index].slug),
                               child: Row(children: [
                                 Container(
-                                  height: 90,
-                                  width: 90,
+                                  height: 90.h,
+                                  width: 90.w,
                                   decoration: BoxDecoration(
                                       image: DecorationImage(
                                           image: NetworkImage(
                                               value.userstories[index].image),
                                           fit: BoxFit.cover),
-                                      borderRadius: BorderRadius.circular(5)),
+                                      borderRadius: BorderRadius.circular(5.r)),
                                 ),
-                                const SizedBox(
-                                  width: 20,
+                                SizedBox(
+                                  width: 20.w,
                                 ),
                                 Expanded(
                                     child: Column(
@@ -312,8 +318,8 @@ class _UserPostListView extends StatelessWidget {
                                           .textTheme
                                           .titleMedium,
                                     ),
-                                    const SizedBox(
-                                      height: 5,
+                                    SizedBox(
+                                      height: 5.h,
                                     ),
                                     const Text("Programming",
                                         style: TextStyle(
@@ -343,11 +349,13 @@ class _AboutView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+      padding: EdgeInsets.symmetric(horizontal: 5.w, vertical: 5.h),
       child: Text(
         aboutText,
-        style:
-            Theme.of(context).textTheme.headlineMedium!.copyWith(fontSize: 20),
+        style: Theme.of(context)
+            .textTheme
+            .headlineMedium!
+            .copyWith(fontSize: 20.sp),
       ),
     );
   }

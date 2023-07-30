@@ -5,7 +5,7 @@ import '../../model/enums/enums.dart';
 import '../widgets/commentbox_form.dart';
 import '../widgets/error_dialog_widget.dart';
 import '../widgets/loadingindicator_widget.dart';
-
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../viewmodel/providers/search_viewmodel.dart';
 
 // ignore: must_be_immutable
@@ -20,7 +20,7 @@ class SearchScreen extends StatelessWidget {
       create: (context) => SearchViewModel(),
       builder: (_, child) => Scaffold(
           appBar: AppBar(
-            toolbarHeight: 100,
+            toolbarHeight: 100.h,
             title: PreferredSize(
               preferredSize: const Size.fromHeight(50),
               child: Column(children: [
@@ -29,10 +29,10 @@ class SearchScreen extends StatelessWidget {
                   style: Theme.of(context)
                       .textTheme
                       .labelMedium!
-                      .copyWith(fontSize: 20),
+                      .copyWith(fontSize: 20.sp),
                 ),
-                const SizedBox(
-                  height: 10,
+               SizedBox(
+                  height: 10.h,
                 ),
                 TextField(
                   style: Theme.of(context).textTheme.labelMedium,
@@ -105,9 +105,9 @@ class _BuildPostList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
-        separatorBuilder: (context, index) => const Divider(
+        separatorBuilder: (context, index) =>  Divider(
               color: ColorStyle.lightgray,
-              height: 5,
+              height: 5.h,
             ),
         itemCount: value.searchpost.length,
         itemBuilder: (context, index) {
@@ -117,7 +117,7 @@ class _BuildPostList extends StatelessWidget {
                   arguments: value.searchpost[index].slug);
             },
             child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+              padding:  EdgeInsets.symmetric(horizontal: 10.w, vertical: 20.h),
               child: Column(
                 children: [
                   _BuildRowPostAuthor(
@@ -125,8 +125,8 @@ class _BuildPostList extends StatelessWidget {
                     username: value.searchpost[index].author.username,
                   ),
                   // ************************************//
-                  const SizedBox(
-                    height: 10,
+                  SizedBox(
+                    height: 10.h,
                   ),
                   _BuildRowPostTitle(
                     imgurl: value.searchpost[index].image,
@@ -152,11 +152,11 @@ class _BuildRowPostAuthor extends StatelessWidget {
     return Row(
       children: [
         CircleAvatar(
-          radius: 15,
+          radius: 15.r,
           backgroundImage: NetworkImage(imgurl),
         ),
-        const SizedBox(
-          width: 10,
+        SizedBox(
+          width: 10.w,
         ),
         Text(username, style: Theme.of(context).textTheme.headlineSmall),
         const Spacer(),
@@ -178,19 +178,19 @@ class _BuildRowPostTitle extends StatelessWidget {
     return Row(
       children: [
         Container(
-          height: 90,
-          width: 90,
+          height: 90.h,
+          width: 90.w,
           decoration: BoxDecoration(
               image: DecorationImage(
                   image: NetworkImage(imgurl), fit: BoxFit.cover),
               borderRadius: BorderRadius.circular(5)),
         ),
-        const SizedBox(
-          width: 20,
+         SizedBox(
+          width: 20.w,
         ),
         Expanded(
           child: SizedBox(
-            height: 90,
+            height: 90.h,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,

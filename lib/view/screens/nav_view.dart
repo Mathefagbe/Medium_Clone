@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'user_profile_view.dart';
 import 'search_view.dart';
 
+
 class NavigationBottomBarView extends StatelessWidget {
   const NavigationBottomBarView({super.key});
 

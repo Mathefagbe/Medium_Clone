@@ -7,6 +7,7 @@ import '../widgets/error_dialog_widget.dart';
 import '../widgets/user_followbtn_widget.dart';
 import '../widgets/loadingindicator_widget.dart';
 import '../../viewmodel/providers/profile_viewmodel.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BloggerProfileScreen extends StatelessWidget {
   final int authorid;
@@ -37,7 +38,7 @@ class BloggerProfileScreen extends StatelessWidget {
                 return value.userprofile == null
                     ? const Loading()
                     : Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 10),
+                        padding: EdgeInsets.symmetric(horizontal: 10.w),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -45,12 +46,12 @@ class BloggerProfileScreen extends StatelessWidget {
                                 value: value,
                                 authorid: authorid,
                                 status: status),
-                            const SizedBox(
-                              height: 3,
+                            SizedBox(
+                              height: 3.h,
                             ),
-                            const SizedBox(
-                              height: 35,
-                              child: TabBar(tabs: [
+                            SizedBox(
+                              height: 35.h,
+                              child: const TabBar(tabs: [
                                 Tab(
                                   text: "Stories",
                                 ),
@@ -59,7 +60,6 @@ class BloggerProfileScreen extends StatelessWidget {
                                 )
                               ]),
                             ),
-                            const Divider(),
                             Expanded(
                                 child: TabBarView(children: [
                               _BuildAuthorPostListView(id: authorid),
@@ -85,17 +85,17 @@ class _BuildAuthorProfileHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 10.0),
+      padding: EdgeInsets.symmetric(horizontal: 10.0.w),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(children: [
             CircleAvatar(
-              radius: 30,
+              radius: 30.r,
               backgroundImage: NetworkImage(value.userprofile!.image),
             ),
-            const SizedBox(
-              width: 10,
+            SizedBox(
+              width: 10.w,
             ),
             Expanded(
                 child: Column(
@@ -106,10 +106,10 @@ class _BuildAuthorProfileHeader extends StatelessWidget {
                     style: Theme.of(context)
                         .textTheme
                         .headlineMedium!
-                        .copyWith(fontSize: 20),
+                        .copyWith(fontSize: 20.sp),
                   ),
-                  const SizedBox(
-                    height: 3,
+                  SizedBox(
+                    height: 3.h,
                   ),
                   Row(children: [
                     InkWell(
@@ -117,14 +117,14 @@ class _BuildAuthorProfileHeader extends StatelessWidget {
                         Navigator.pushNamed(context, "/following",
                             arguments: authorid);
                       },
-                      child: Text("following ${value.userprofile!.following}.",
+                      child: Text("following ${value.userprofile!.following} .",
                           style: Theme.of(context)
                               .textTheme
                               .labelMedium!
-                              .copyWith(fontSize: 17)),
+                              .copyWith(fontSize: 15.sp)),
                     ),
-                    const SizedBox(
-                      width: 10,
+                    SizedBox(
+                      width: 10.w,
                     ),
                     InkWell(
                         onTap: () {
@@ -135,19 +135,19 @@ class _BuildAuthorProfileHeader extends StatelessWidget {
                             style: Theme.of(context)
                                 .textTheme
                                 .labelMedium!
-                                .copyWith(fontSize: 17)))
+                                .copyWith(fontSize: 15.sp)))
                   ]),
                 ]))
           ]),
-          const SizedBox(
-            height: 10,
+          SizedBox(
+            height: 10.h,
           ),
           status == "hide"
               ? const SizedBox()
               : FollowBtn(
                   follow: status,
                   authorid: authorid,
-                  height: 40,
+                  height: 40.h,
                   width: double.maxFinite,
                 ),
         ],
@@ -184,9 +184,9 @@ class _BuildAuthorPostListView extends StatelessWidget {
                     ),
                   )
                 : ListView.separated(
-                    separatorBuilder: (context, index) => const Divider(
+                    separatorBuilder: (context, index) => Divider(
                       color: ColorStyle.lightgray,
-                      height: 5,
+                      height: 5.h,
                     ),
                     itemCount: value.stories.length,
                     itemBuilder: (context, index) {
@@ -196,8 +196,8 @@ class _BuildAuthorPostListView extends StatelessWidget {
                                 arguments: value.stories[index].slug);
                           },
                           child: Container(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 10, vertical: 20),
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 10.w, vertical: 20.h),
                               child: Column(children: [
                                 _BuildRowPostAuthor(
                                   imgurl: value
@@ -206,8 +206,8 @@ class _BuildAuthorPostListView extends StatelessWidget {
                                       value.stories[index].author.username,
                                 ),
 
-                                const SizedBox(
-                                  height: 10,
+                                SizedBox(
+                                  height: 10.h,
                                 ),
 
                                 _BuildRowPostTitle(
@@ -233,15 +233,14 @@ class _BuildRowPostAuthor extends StatelessWidget {
     return Row(
       children: [
         CircleAvatar(
-          radius: 15,
+          radius: 15.r,
           backgroundImage: NetworkImage(imgurl),
         ),
-        const SizedBox(
-          width: 10,
+        SizedBox(
+          width: 10.w,
         ),
         Text(username, style: Theme.of(context).textTheme.headlineSmall),
         const Spacer(),
-        const Icon(Icons.more_vert)
       ],
     );
   }
@@ -259,19 +258,19 @@ class _BuildRowPostTitle extends StatelessWidget {
     return Row(
       children: [
         Container(
-          height: 90,
-          width: 90,
+          height: 90.h,
+          width: 90.w,
           decoration: BoxDecoration(
               image: DecorationImage(
                   image: NetworkImage(imgurl), fit: BoxFit.cover),
               borderRadius: BorderRadius.circular(5)),
         ),
-        const SizedBox(
-          width: 20,
+        SizedBox(
+          width: 20.w,
         ),
         Expanded(
           child: SizedBox(
-            height: 90,
+            height: 90.h,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -304,11 +303,13 @@ class AboutView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+      padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 10.h),
       child: Text(
         aboutText,
-        style:
-            Theme.of(context).textTheme.headlineMedium!.copyWith(fontSize: 20),
+        style: Theme.of(context)
+            .textTheme
+            .headlineMedium!
+            .copyWith(fontSize: 20.sp),
       ),
     );
   }

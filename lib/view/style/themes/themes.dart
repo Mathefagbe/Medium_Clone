@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../widgets/customindicator.dart';
 import "package:google_fonts/google_fonts.dart";
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomThemes {
   static Color forgroundlight = const Color(0xFFFAFBFD);
@@ -12,80 +13,81 @@ class CustomThemes {
 
   static TextTheme lightTextTheme = TextTheme(
     bodyLarge: GoogleFonts.lora(
-      fontSize: 18,
-      height: 1.6,
+      fontSize: 18.sp,
+      height: 1.6.h,
       color: Colors.black87,
       fontWeight: FontWeight.w400,
     ),
     titleLarge: GoogleFonts.lora(
-      fontSize: 22,
+      fontSize: 22.sp,
       color: ColorStyle.black,
       fontWeight: FontWeight.bold,
     ),
     titleMedium: GoogleFonts.lora(
-      fontSize: 16,
+      fontSize: 16.sp,
       color: ColorStyle.black,
       fontWeight: FontWeight.w500,
     ),
     headlineSmall: GoogleFonts.lora(
-      fontSize: 13,
+      fontSize: 13.sp,
       color: ColorStyle.black,
       fontWeight: FontWeight.w400,
     ),
     headlineMedium: GoogleFonts.lora(
-      fontSize: 15,
+      fontSize: 15.sp,
       color: ColorStyle.black,
       fontWeight: FontWeight.w400,
     ),
     labelSmall: GoogleFonts.lora(
-      fontSize: 12,
+      fontSize: 12.sp,
       color: ColorStyle.lightgray,
     ),
     labelMedium: GoogleFonts.lora(
-      fontSize: 15,
+      fontSize: 15.sp,
       color: ColorStyle.black,
     ),
   );
 
   static TextTheme darkTextTheme = TextTheme(
     bodyLarge: GoogleFonts.lora(
-      fontSize: 18,
-      height: 1.6,
+      fontSize: 18.sp,
+      height: 1.6.h,
       color: ColorStyle.white,
       fontWeight: FontWeight.w400,
     ),
     titleLarge: GoogleFonts.lora(
-      fontSize: 22,
+      fontSize: 22.sp,
       color: ColorStyle.white,
       fontWeight: FontWeight.bold,
     ),
     titleMedium: GoogleFonts.lora(
-      fontSize: 16,
+      fontSize: 16.sp,
       color: ColorStyle.white,
       fontWeight: FontWeight.w500,
     ),
     headlineSmall: GoogleFonts.lora(
-      fontSize: 13,
+      fontSize: 13.sp,
       color: ColorStyle.white,
       fontWeight: FontWeight.w400,
     ),
     headlineMedium: GoogleFonts.lora(
-      fontSize: 15,
+      fontSize: 15.sp,
       color: ColorStyle.white,
       fontWeight: FontWeight.w400,
     ),
     labelSmall: GoogleFonts.lora(
-      fontSize: 12,
+      fontSize: 12.sp,
       color: ColorStyle.lightgray,
     ),
     labelMedium: GoogleFonts.lora(
-      fontSize: 15,
+      fontSize: 15.sp,
       color: ColorStyle.white,
     ),
   );
 
   static ThemeData light() {
     return ThemeData(
+        useMaterial3: true,
         brightness: Brightness.light,
         textTheme: lightTextTheme,
         scaffoldBackgroundColor: backgroundlight,
@@ -113,6 +115,7 @@ class CustomThemes {
 
   static ThemeData dark() {
     return ThemeData(
+      useMaterial3: true,
       brightness: Brightness.dark,
       textTheme: darkTextTheme,
       scaffoldBackgroundColor: backgrounddark,

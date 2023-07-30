@@ -7,6 +7,7 @@ import '../widgets/error_dialog_widget.dart';
 import '../widgets/user_followbtn_widget.dart';
 import '../widgets/loadingindicator_widget.dart';
 import '../../viewmodel/providers/follower_viewmodel.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class FollowerView extends StatelessWidget {
   final int id;
@@ -36,17 +37,17 @@ class FollowerView extends StatelessWidget {
               );
             } else {
               return ListView.separated(
-                  separatorBuilder: (context, index) => const Divider(
+                  separatorBuilder: (context, index) => Divider(
                         color: ColorStyle.lightgray,
-                        height: 5,
+                        height: 5.h,
                       ),
                   itemCount: value.follower.length,
                   itemBuilder: (context, index) {
                     return ListTile(
-                      contentPadding: const EdgeInsets.symmetric(
-                          vertical: 10, horizontal: 20),
+                      contentPadding:  EdgeInsets.symmetric(
+                          vertical: 10.h, horizontal: 20.w),
                       leading: CircleAvatar(
-                        radius: 20,
+                        radius: 20.r,
                         backgroundImage: NetworkImage(
                           value.follower[index].userFrom.userprofile.image,
                         ),
@@ -56,7 +57,7 @@ class FollowerView extends StatelessWidget {
                         style: Theme.of(context)
                             .textTheme
                             .headlineMedium!
-                            .copyWith(fontSize: 16),
+                            .copyWith(fontSize: 16.sp),
                       ),
                       subtitle: Text(
                         value.follower[index].userFrom.userprofile.bio,
@@ -67,8 +68,8 @@ class FollowerView extends StatelessWidget {
                       trailing: value.follower[index].status == "hide"
                           ? const SizedBox()
                           : FollowBtn(
-                              height: 30,
-                              width: 100,
+                              height: 30.h,
+                              width: 100.w,
                               authorid: value.follower[index].userFrom.id,
                               follow: value.follower[index].status,
                             ),

@@ -11,6 +11,7 @@ import '../widgets/error_dialog_widget.dart';
 import '../widgets/loadingindicator_widget.dart';
 import '../../viewmodel/providers/home_viewmodel.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BlogPostDetailScreen extends StatelessWidget {
   final String slug;
@@ -23,18 +24,18 @@ class BlogPostDetailScreen extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           elevation: 0,
-          actions: const [
-            Icon(Icons.share),
+          actions:  [
+            const Icon(Icons.share),
             SizedBox(
-              width: 15,
+              width: 15.w,
             ),
-            Icon(Icons.bookmark_add_outlined),
+           const Icon(Icons.bookmark_add_outlined),
             SizedBox(
-              width: 15,
+              width: 15.w,
             ),
-            Icon(Icons.more_vert_rounded),
+           const Icon(Icons.more_vert_rounded),
             SizedBox(
-              width: 15,
+              width: 15.w,
             ),
           ],
         ),
@@ -55,8 +56,8 @@ class BlogPostDetailScreen extends StatelessWidget {
                     alignment: Alignment.bottomCenter,
                     children: [
                       ListView(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 20, vertical: 10),
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 20.w, vertical: 10.h),
                         children: [
                           _BuildHeader(
                             timeago: value.blogpost!.post.timeAgo,
@@ -65,12 +66,12 @@ class BlogPostDetailScreen extends StatelessWidget {
                             authorid: value.blogpost!.post.author.id,
                             status: value.blogpost!.status,
                           ),
-                          const SizedBox(
-                            height: 10,
+                          SizedBox(
+                            height: 10.h,
                           ),
                           _BuildPostBody(textBody: value.blogpost!.post.body),
-                          const SizedBox(
-                            height: 40,
+                           SizedBox(
+                            height: 40.h,
                           )
                         ],
                       ),
@@ -122,11 +123,11 @@ class _BuildHeader extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             CircleAvatar(
-              radius: 25,
+              radius: 25.r,
               backgroundImage: NetworkImage(url),
             ),
-            const SizedBox(
-              width: 15,
+           SizedBox(
+              width: 15.w,
             ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -137,21 +138,21 @@ class _BuildHeader extends StatelessWidget {
                       username,
                       style: Theme.of(context).textTheme.headlineMedium,
                     ),
-                    const SizedBox(
-                      width: 8,
+                    SizedBox(
+                      width: 8.w,
                     ),
                     status == "hide"
                         ? const SizedBox()
                         : FollowBtn(
                             follow: status,
                             authorid: authorid,
-                            width: 100,
-                            height: 30,
+                            width: 100.w,
+                            height: 30.h,
                           )
                   ],
                 ),
-                const SizedBox(
-                  height: 3,
+                 SizedBox(
+                  height: 3.h,
                 ),
                 Text(
                   timeago.replaceFirst(RegExp(r'Â'), ''),
@@ -202,15 +203,15 @@ class ActionContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 100, vertical: 5),
-      padding: const EdgeInsets.symmetric(vertical: 10),
+      margin:  EdgeInsets.symmetric(horizontal: 100.w, vertical: 5.h),
+      padding:  EdgeInsets.symmetric(vertical: 10.h),
       decoration: BoxDecoration(
           color: Theme.of(context).cardColor,
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(20.r),
           boxShadow: [
             BoxShadow(
               color: Theme.of(context).canvasColor.withOpacity(0.2),
-              blurRadius: 5,
+              blurRadius: 5.r,
               offset: const Offset(0, 2),
             )
           ]),
@@ -223,9 +224,9 @@ class ActionContainer extends StatelessWidget {
             },
             child: Row(
               children: [
-                const Icon(
+                 Icon(
                   CupertinoIcons.chat_bubble,
-                  size: 30,
+                  size: 30.sp,
                   color: ColorStyle.lightgray,
                 ),
                 Text("$comment")
@@ -255,14 +256,14 @@ class ActionContainer extends StatelessWidget {
               child: Row(
                 children: [
                   likeStatus == "liked"
-                      ? const Icon(
+                      ?  Icon(
                           CupertinoIcons.heart_fill,
-                          size: 30,
+                          size: 30.sp,
                           color: ColorStyle.lightgray,
                         )
-                      : const Icon(
+                      :  Icon(
                           CupertinoIcons.heart,
-                          size: 30,
+                          size: 30.sp,
                           color: ColorStyle.lightgray,
                         ),
                   Text("$likeCount")

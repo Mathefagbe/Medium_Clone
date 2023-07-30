@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../services/api_client/post_repository.dart';
 import '../style/colors/colorstyle.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 // ignore: must_be_immutable
 class FollowBtn extends StatelessWidget {
@@ -44,7 +45,7 @@ class FollowBtn extends StatelessWidget {
                     border: Border.all(
                       color: ColorStyle.lightgreen,
                     ),
-                    borderRadius: BorderRadius.circular(20)),
+                    borderRadius: BorderRadius.circular(20.r)),
                 child: Text(
                   follow,
                   style: const TextStyle(color: ColorStyle.lightgreen),
@@ -56,7 +57,7 @@ class FollowBtn extends StatelessWidget {
                 width: width,
                 decoration: BoxDecoration(
                     color: ColorStyle.lightgreen,
-                    borderRadius: BorderRadius.circular(20)),
+                    borderRadius: BorderRadius.circular(20.r)),
                 child: Text(
                   follow,
                   style: const TextStyle(color: ColorStyle.white),

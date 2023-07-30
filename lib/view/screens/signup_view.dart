@@ -6,6 +6,7 @@ import '../../model/enums/enums.dart';
 import '../../viewmodel/providers/auth_viewmodel.dart';
 import '../style/colors/colorstyle.dart';
 import '../widgets/login_signup_form.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -49,18 +50,18 @@ class _SignUpScreenState extends State<SignUpScreen> {
         body: Form(
       key: _formstate,
       child: SingleChildScrollView(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 70),
+        padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 70.h),
         child: Column(
           children: [
             const Logo(),
-            const SizedBox(height: 40),
+             SizedBox(height: 40.h),
             Text('Join Medium.',
                 style: Theme.of(context)
                     .textTheme
                     .bodyLarge!
-                    .copyWith(fontSize: 25)),
-            const SizedBox(
-              height: 20,
+                    .copyWith(fontSize: 25.sp)),
+             SizedBox(
+              height: 20.h,
             ),
             TextFormField(
                 style: Theme.of(context).textTheme.labelMedium,
@@ -71,8 +72,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     labelStyle: Theme.of(context).textTheme.labelMedium,
                     hintText: "Username",
                     labelText: "Username")),
-            const SizedBox(
-              height: 10,
+             SizedBox(
+              height: 10.h,
             ),
             TextFormField(
                 style: Theme.of(context).textTheme.labelMedium,
@@ -83,8 +84,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     labelStyle: Theme.of(context).textTheme.labelMedium,
                     hintText: "Email",
                     labelText: "Email")),
-            const SizedBox(
-              height: 10,
+            SizedBox(
+              height: 10.h,
             ),
             TextFormField(
                 style: Theme.of(context).textTheme.labelMedium,
@@ -96,20 +97,20 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     labelStyle: Theme.of(context).textTheme.labelMedium,
                     hintText: "Full name",
                     labelText: "Full name")),
-            const SizedBox(
-              height: 10,
+            SizedBox(
+              height: 10.h,
             ),
             _PasswordField(
               controller: password,
             ),
-            const SizedBox(
-              height: 10,
+            SizedBox(
+              height: 10.h,
             ),
             _ConfirmPasswordField(
               controller: confirmpassword,
             ),
-            const SizedBox(
-              height: 20,
+             SizedBox(
+              height: 20.h,
             ),
             InkWell(
               onTap: () async {
@@ -122,17 +123,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     'password': password.text,
                     'confirm_password': confirmpassword.text
                   };
-                  Provider.of<AuthChangeNotifer>(context, listen: false)
+                  Provider.of<SignUpAuthChangeNotifer>(context, listen: false)
                       .signUp(formdata);
                 }
               },
-              child: Consumer<AuthChangeNotifer>(
+              child: Consumer<SignUpAuthChangeNotifer>(
                 builder: (context, value, child) => Container(
                   alignment: Alignment.center,
                   width: double.maxFinite,
-                  height: 50,
+                  height: 50.h,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
+                    borderRadius: BorderRadius.circular(20.r),
                     color: ColorStyle.lightgreen[400],
                   ),
                   child: value.fetchstate == PageState.loading
@@ -140,10 +141,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           child: CircularProgressIndicator(
                               color: ColorStyle.white),
                         )
-                      : const Text(
+                      :  Text(
                           "Sign Up",
                           style: TextStyle(
-                            fontSize: 15,
+                            fontSize: 15.sp,
                             color: ColorStyle.white,
                             fontWeight: FontWeight.w600,
                           ),
@@ -151,10 +152,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
               ),
             ),
-            const SizedBox(
-              height: 10,
+            SizedBox(
+              height: 10.h,
             ),
-            const ErrorMessage(),
+            const _ErrorMessage(),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -236,15 +237,12 @@ class _ConfirmPasswordField extends StatelessWidget {
   }
 }
 
-class ErrorMessage extends StatelessWidget {
-  const ErrorMessage({super.key});
+class _ErrorMessage extends StatelessWidget {
+  const _ErrorMessage();
 
   @override
   Widget build(BuildContext context) {
-    // var bud = Provider.of<AuthChangeNotifer>(context).
-    // print(bud);
-    print('build');
-    return Consumer<AuthChangeNotifer>(
+    return Consumer<SignUpAuthChangeNotifer>(
       builder: (context, value, child) => value.errormessage == ""
           ? const SizedBox()
           : Text(
